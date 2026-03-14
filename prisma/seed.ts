@@ -61,7 +61,7 @@ function pickAmenities(index: number): string[] {
   for (let i = 0; i < count; i++) {
     result.push(ALL_AMENITIES[(start + i) % ALL_AMENITIES.length]);
   }
-  return [...new Set(result)];
+  return Array.from(new Set(result));
 }
 
 function addDays(date: Date, days: number): Date {
