@@ -48,10 +48,11 @@ router.post('/register', validate(registerSchema), async (req: Request, res: Res
     });
 
     // Générer le JWT
+    const jwtSecret: jwt.Secret = process.env.JWT_SECRET || 'dev-secret';
     const token = jwt.sign(
       { userId: user.id, role: user.role },
-      process.env.JWT_SECRET || 'dev-secret',
-      { expiresIn: process.env.JWT_EXPIRES_IN || '7d' },
+      jwtSecret,
+      { expiresIn: '7d' },
     );
 
     res.status(201).json({ user, token });
@@ -81,10 +82,11 @@ router.post('/login', validate(loginSchema), async (req: Request, res: Response)
     }
 
     // Générer le JWT
+    const jwtSecret: jwt.Secret = process.env.JWT_SECRET || 'dev-secret';
     const token = jwt.sign(
       { userId: user.id, role: user.role },
-      process.env.JWT_SECRET || 'dev-secret',
-      { expiresIn: process.env.JWT_EXPIRES_IN || '7d' },
+      jwtSecret,
+      { expiresIn: '7d' },
     );
 
     res.json({

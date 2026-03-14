@@ -40,7 +40,7 @@ export const notificationService = {
         type,
         title,
         body,
-        data: data ? data : undefined,
+        data: data ? (data as any) : undefined,
       },
     });
 

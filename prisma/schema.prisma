@@ -46,6 +46,7 @@ enum SubscriptionStatus {
 
 enum SubscriptionPlan {
   MONTHLY_5EUR
+  MONTHLY_8EUR
 }
 
 enum NotificationType {
