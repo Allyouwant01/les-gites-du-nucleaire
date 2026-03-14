@@ -24,7 +24,13 @@ const httpServer = createServer(app);
 // Middleware globaux
 app.use(helmet());
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:8081', process.env.NEXTAUTH_URL || ''],
+  origin: [
+    'http://localhost:3000',
+    'http://localhost:8081',
+    process.env.CORS_ORIGIN || '',
+    'https://lesgitesdunucleaire.fr',
+    'https://www.lesgitesdunucleaire.fr',
+  ].filter(Boolean),
   credentials: true,
 }));
 app.use(morgan('dev'));
