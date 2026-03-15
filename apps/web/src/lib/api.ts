@@ -82,6 +82,11 @@ export const listingsAPI = {
   getAvailability: (id: string) =>
     fetchAPI<{ availabilities: any[] }>(`/api/listings/${id}/availability`),
 
+  getBookedDates: (id: string) =>
+    fetchAPI<{ bookedDates: { checkInDate: string; checkOutDate: string }[] }>(
+      `/api/listings/${id}/booked-dates`,
+    ),
+
   updateAvailability: (token: string, id: string, data: any) =>
     fetchAPI(`/api/listings/${id}/availability`, {
       method: 'PUT',

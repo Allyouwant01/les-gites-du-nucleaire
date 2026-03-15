@@ -12,6 +12,7 @@ import {
 import { listingsAPI, bookingsAPI } from '@/lib/api';
 import { useAuthStore } from '@/lib/auth-store';
 import { formatPrice, formatDate, AMENITIES } from '@gites/shared';
+import AvailabilityCalendar from '@/components/calendar/AvailabilityCalendar';
 
 export default function ListingDetailPage() {
   const { id } = useParams();
@@ -29,10 +30,15 @@ export default function ListingDetailPage() {
     paymentMethod: 'CARD' as 'CARD' | 'CASH' | 'SPLIT',
   });
   const [bookingLoading, setBookingLoading] = useState(false);
+  const [bookedDates, setBookedDates] = useState<{ checkInDate: string; checkOutDate: string }[]>([]);
 
   useEffect(() => {
-    listingsAPI.getById(id as string).then(({ listing }) => {
-      setListing(listing);
+    Promise.all([
+      listingsAPI.getById(id as string),
+      listingsAPI.getBookedDates(id as string).catch(() => ({ bookedDates: [] })),
+    ]).then(([listingData, bookedData]) => {
+      setListing(listingData.listing);
+      setBookedDates(bookedData.bookedDates);
       setLoading(false);
     }).catch(() => {
       toast.error('Logement non trouvé');
@@ -200,6 +206,25 @@ export default function ListingDetailPage() {
             <p className="text-gray-700 leading-relaxed whitespace-pre-line">{listing.description}</p>
           </div>
 
+          {/* Calendrier de disponibilité */}
+          <div className="mt-8">
+            <h2 className="text-xl font-heading font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <Calendar size={22} className="text-primary" />
+              Disponibilités
+            </h2>
+            <div className="card p-5">
+              <AvailabilityCalendar
+                availabilities={listing.availabilities || []}
+                bookedDates={bookedDates}
+                checkInDate={bookingForm.checkInDate}
+                checkOutDate={bookingForm.checkOutDate}
+                onDateSelect={(checkIn, checkOut) =>
+                  setBookingForm({ ...bookingForm, checkInDate: checkIn, checkOutDate: checkOut })
+                }
+              />
+            </div>
+          </div>
+
           {/* Équipements */}
           <div className="mt-8">
             <h2 className="text-xl font-heading font-bold text-gray-900 mb-3">Équipements</h2>
@@ -299,34 +324,42 @@ export default function ListingDetailPage() {
             </div>
 
             <form onSubmit={handleBooking} className="space-y-4">
+              {/* Mini calendrier dans la sidebar */}
+              <div className="border border-gray-200 rounded-xl p-3">
+                <AvailabilityCalendar
+                  availabilities={listing.availabilities || []}
+                  bookedDates={bookedDates}
+                  checkInDate={bookingForm.checkInDate}
+                  checkOutDate={bookingForm.checkOutDate}
+                  onDateSelect={(checkIn, checkOut) =>
+                    setBookingForm({ ...bookingForm, checkInDate: checkIn, checkOutDate: checkOut })
+                  }
+                  compact
+                />
+              </div>
+
+              {/* Dates sélectionnées */}
               <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Arrivée</label>
-                  <input
-                    type="date"
-                    value={bookingForm.checkInDate}
-                    onChange={(e) =>
-                      setBookingForm({ ...bookingForm, checkInDate: e.target.value })
-                    }
-                    className="input-field text-sm"
-                    min={new Date().toISOString().split('T')[0]}
-                    required
-                  />
+                <div className="bg-gray-50 rounded-lg p-2.5 text-center">
+                  <p className="text-[10px] font-semibold text-gray-500 uppercase">Arrivée</p>
+                  <p className="text-sm font-bold text-gray-900 mt-0.5">
+                    {bookingForm.checkInDate
+                      ? new Date(bookingForm.checkInDate).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })
+                      : '—'}
+                  </p>
                 </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Départ</label>
-                  <input
-                    type="date"
-                    value={bookingForm.checkOutDate}
-                    onChange={(e) =>
-                      setBookingForm({ ...bookingForm, checkOutDate: e.target.value })
-                    }
-                    className="input-field text-sm"
-                    min={bookingForm.checkInDate || new Date().toISOString().split('T')[0]}
-                    required
-                  />
+                <div className="bg-gray-50 rounded-lg p-2.5 text-center">
+                  <p className="text-[10px] font-semibold text-gray-500 uppercase">Départ</p>
+                  <p className="text-sm font-bold text-gray-900 mt-0.5">
+                    {bookingForm.checkOutDate
+                      ? new Date(bookingForm.checkOutDate).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })
+                      : '—'}
+                  </p>
                 </div>
               </div>
+              {/* Hidden inputs for form validation */}
+              <input type="hidden" name="checkInDate" value={bookingForm.checkInDate} required />
+              <input type="hidden" name="checkOutDate" value={bookingForm.checkOutDate} required />
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Voyageurs</label>

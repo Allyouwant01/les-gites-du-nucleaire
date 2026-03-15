@@ -281,6 +281,29 @@ router.post(
   },
 );
 
+// GET /api/listings/:id/booked-dates — Dates réservées (anonymisé)
+router.get('/:id/booked-dates', async (req: Request, res: Response) => {
+  try {
+    const bookings = await prisma.booking.findMany({
+      where: {
+        listingId: req.params.id,
+        status: { in: ['CONFIRMED', 'ACTIVE'] },
+        checkOutDate: { gte: new Date() },
+      },
+      select: {
+        checkInDate: true,
+        checkOutDate: true,
+      },
+      orderBy: { checkInDate: 'asc' },
+    });
+
+    res.json({ bookedDates: bookings });
+  } catch (error) {
+    console.error('Erreur récupération dates réservées:', error);
+    res.status(500).json({ error: 'Erreur lors de la récupération des dates réservées' });
+  }
+});
+
 // GET /api/listings/:id/availability — Disponibilités d'un logement
 router.get('/:id/availability', async (req: Request, res: Response) => {
   try {
