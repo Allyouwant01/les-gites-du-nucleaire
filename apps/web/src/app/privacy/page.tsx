@@ -29,7 +29,7 @@ export default function PrivacyPage() {
               <p className="text-gray-600 leading-relaxed">
                 Le responsable du traitement des données personnelles est la société
                 Les Gîtes du Nucléaire, dont le siège social est situé à Paris, France.
-                Contact : <strong>contact@gites-nucleaire.fr</strong>
+                Contact : <strong>contact@lesgitesdunucleaire.fr</strong>
               </p>
             </div>
 
@@ -175,7 +175,7 @@ export default function PrivacyPage() {
                   <li><strong>Droit à la limitation :</strong> limiter le traitement de vos données</li>
                 </ul>
                 <p>
-                  Pour exercer ces droits, contactez-nous à : <strong>contact@gites-nucleaire.fr</strong>
+                  Pour exercer ces droits, contactez-nous à : <strong>contact@lesgitesdunucleaire.fr</strong>
                 </p>
               </div>
             </div>
@@ -211,7 +211,7 @@ export default function PrivacyPage() {
               <p className="text-gray-600 leading-relaxed">
                 Pour toute question relative à cette politique de confidentialité,
                 contactez notre Délégué à la Protection des Données :
-                <br /><strong>contact@gites-nucleaire.fr</strong>
+                <br /><strong>contact@lesgitesdunucleaire.fr</strong>
               </p>
               <p className="text-gray-600 leading-relaxed mt-3">
                 Vous pouvez également introduire une réclamation auprès de la

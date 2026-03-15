@@ -76,7 +76,7 @@ export default function Footer() {
             <h3 className="font-heading font-bold text-accent mb-4">Contact</h3>
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-gray-300 text-sm">
-                <Mail size={16} /> contact@gites-nucleaire.fr
+                <Mail size={16} /> contact@lesgitesdunucleaire.fr
               </li>
               <li className="flex items-center gap-2 text-gray-300 text-sm">
                 <Phone size={16} /> 06 58 26 36 44

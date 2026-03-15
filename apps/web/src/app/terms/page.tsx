@@ -185,7 +185,7 @@ export default function TermsPage() {
               </h2>
               <p className="text-gray-600 leading-relaxed">
                 Pour toute question relative aux présentes CGU, vous pouvez nous contacter
-                à l&apos;adresse : <strong>contact@gites-nucleaire.fr</strong>
+                à l&apos;adresse : <strong>contact@lesgitesdunucleaire.fr</strong>
               </p>
             </div>
 
