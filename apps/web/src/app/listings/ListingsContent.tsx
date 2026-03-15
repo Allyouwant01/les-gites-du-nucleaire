@@ -11,6 +11,7 @@ import { formatPrice, AMENITIES } from '@gites/shared';
 export default function ListingsContent() {
   const searchParams = useSearchParams();
   const plantId = searchParams.get('plant');
+  const searchQuery = searchParams.get('search');
 
   const [plant, setPlant] = useState<any>(null);
   const [plants, setPlants] = useState<any[]>([]);
@@ -27,10 +28,27 @@ export default function ListingsContent() {
     sortBy: 'distance',
   });
 
-  // Charger les centrales
+  // Charger les centrales et résoudre le paramètre search
   useEffect(() => {
-    plantsAPI.getAll().then(({ plants }) => setPlants(plants));
-  }, []);
+    plantsAPI.getAll().then(({ plants: loadedPlants }) => {
+      setPlants(loadedPlants);
+
+      // Si on a un paramètre search (depuis la carte ou la barre de recherche),
+      // trouver la centrale correspondante par nom, ville ou département
+      if (searchQuery && !plantId && loadedPlants.length > 0) {
+        const query = searchQuery.toLowerCase().trim();
+        const matched = loadedPlants.find((p: any) =>
+          p.name.toLowerCase().includes(query) ||
+          query.includes(p.name.toLowerCase()) ||
+          (p.city && p.city.toLowerCase().includes(query)) ||
+          (p.department && p.department.toLowerCase().includes(query))
+        );
+        if (matched) {
+          setSelectedPlant(matched.id);
+        }
+      }
+    });
+  }, [searchQuery, plantId]);
 
   // Charger les logements quand une centrale est sélectionnée
   useEffect(() => {

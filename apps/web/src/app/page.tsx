@@ -236,10 +236,10 @@ export default function HomePage() {
                           <span>{listing.bedrooms} ch.</span>
                           <span>{listing.maxGuests} pers.</span>
                         </div>
-                        {listing.averageRating && (
+                        {listing.rating && (
                           <div className="flex items-center gap-1 text-sm">
                             <Star size={14} className="text-accent fill-accent" />
-                            <span className="font-semibold">{listing.averageRating}</span>
+                            <span className="font-semibold">{listing.rating}</span>
                           </div>
                         )}
                       </div>
