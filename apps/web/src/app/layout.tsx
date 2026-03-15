@@ -15,8 +15,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           content="Trouvez des logements vérifiés près des centrales nucléaires françaises. Paiement hebdomadaire, paiement partagé entre colocataires."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" sizes="48x48" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="icon" href="/favicon.svg" sizes="any" />
         <link rel="apple-touch-icon" href="/images/logo-lgn.svg" />
       </head>
       <body className="min-h-screen flex flex-col">
