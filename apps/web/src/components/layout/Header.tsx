@@ -17,12 +17,13 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <Image
-              src="/images/logo-lgn.png"
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/logo-lgn.svg"
               alt="LGN - Les Gîtes du Nucléaire"
-              width={40}
-              height={40}
-              className="rounded-lg"
+              width={44}
+              height={44}
+              className="rounded-xl"
             />
             <span className="font-heading font-bold text-primary text-lg hidden sm:block">
               Les Gîtes du Nucléaire

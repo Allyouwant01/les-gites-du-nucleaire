@@ -12,12 +12,13 @@ export default function Footer() {
           {/* Logo et description */}
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <Image
-                src="/images/logo-lgn-yellow.png"
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/logo-lgn-yellow.svg"
                 alt="LGN - Les Gîtes du Nucléaire"
-                width={36}
-                height={36}
-                className="rounded-lg"
+                width={40}
+                height={40}
+                className="rounded-xl"
               />
               <span className="font-heading font-bold text-lg">Les Gîtes du Nucléaire</span>
             </div>

@@ -1,0 +1,23 @@
+<svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="500" height="500" rx="40" fill="#F4D03F"/>
+  <rect x="22" y="22" width="456" height="456" rx="30" fill="none" stroke="#D4B52E" stroke-width="2.5"/>
+  <g stroke="#1B4F72" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M120 285 L165 115 L245 115 L290 285" stroke-width="2.8"/>
+    <line x1="110" y1="285" x2="300" y2="285" stroke-width="2.8"/>
+    <path d="M210 285 L255 115 L335 115 L380 285" stroke-width="2.8"/>
+    <line x1="200" y1="285" x2="390" y2="285" stroke-width="2.8"/>
+    <rect x="222" y="230" width="56" height="55" stroke-width="2.2"/>
+    <path d="M222 230 Q250 195 278 230" stroke-width="2.2"/>
+    <rect x="244" y="198" width="12" height="20" stroke-width="1.8"/>
+    <path d="M188 108 C186 95 194 95 192 82 C190 69 198 69 196 56" stroke-width="2" opacity="0.65"/>
+    <path d="M200 108 C198 93 206 93 204 78 C202 63 210 63 208 50" stroke-width="1.8" opacity="0.5"/>
+    <path d="M212 108 C210 96 218 96 216 84 C214 72 222 72 220 62" stroke-width="1.5" opacity="0.35"/>
+    <path d="M278 108 C276 95 284 95 282 82 C280 69 288 69 286 56" stroke-width="2" opacity="0.65"/>
+    <path d="M290 108 C288 93 296 93 294 78 C292 63 300 63 298 50" stroke-width="1.8" opacity="0.5"/>
+    <path d="M302 108 C300 96 308 96 306 84 C304 72 312 72 310 62" stroke-width="1.5" opacity="0.35"/>
+    <path d="M250 193 C248 184 254 184 252 175" stroke-width="1.4" opacity="0.45"/>
+  </g>
+  <text x="250" y="365" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="75" font-weight="700" fill="#1B4F72" letter-spacing="20">LGN</text>
+  <line x1="140" y1="388" x2="360" y2="388" stroke="#1B4F72" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+  <text x="250" y="420" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="500" fill="#1B4F72" letter-spacing="4.5">LES GÎTES DU NUCLÉAIRE</text>
+</svg>
