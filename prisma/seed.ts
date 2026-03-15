@@ -11,6 +11,7 @@ function unsplashUrl(id: string): string {
   return `https://images.unsplash.com/photo-${id}?w=800&q=80`;
 }
 
+// All IDs verified 200 OK on 2026-03-15
 const HOUSE_IDS = [
   '1568605114967-8130f3a36994',
   '1600596542815-ffad4c1539a9',
@@ -19,7 +20,7 @@ const HOUSE_IDS = [
   '1582268611958-ebfd161ef9cf',
   '1502672260266-1c1ef2d93688',
   '1600607687939-ce8a6c25118c',
-  '1583608205223-2a35e4a4086c',
+  '1600607687920-4e2a09cf159d',
   '1600573472550-8090b5e0745e',
   '1600047509807-ba8f99d2cdde',
   '1571939228382-b2f2b585ce15',
@@ -29,15 +30,16 @@ const HOUSE_IDS = [
   '1605276374104-dee2a0ed3cd6',
 ];
 
+// All IDs verified 200 OK on 2026-03-15
 const INTERIOR_IDS = [
   '1522708323590-d24dbb6b0267',
-  '1586023492125-27b65726826d',
+  '1586105449897-20b5efeb3233',
   '1502672023488-70e25813eb80',
   '1556909114-f6e7ad7d3136',
   '1560185127-6ed189bf02f4',
-  '1556909114-f6e7ad7d3136',
-  '1522708323590-d24dbb6b0267',
-  '1502672023488-70e25813eb80',
+  '1560448075-cbc16bb4af8e',
+  '1600566753086-00f18fb6b3ea',
+  '1600566752355-35792bedcfea',
 ];
 
 function getPhotos(index: number): string[] {
